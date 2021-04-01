@@ -80,12 +80,18 @@
   }
 
   &__notices {
-	min-height: 400px;
+	min-height: 100px;
 	position: relative;
 	&_draggable_img {
+	  cursor: grab;
 	  position: absolute;
 	  top:0;
 	  left:0;
+
+	}
+
+	&.in-draggable {
+	  cursor: grabbing;
 	}
   }
 

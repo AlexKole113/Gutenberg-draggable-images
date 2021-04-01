@@ -49,14 +49,17 @@ class DraggableScreen extends Component {
 
 
 	render(){
-		const { children } = this.props;
+		const { children, blockSize } = this.props;
+		const { startDrag } = this.state
 		return(<div
 					onMouseDown={ this.dragStart }
 					onMouseUp={ this.dragStop }
 					onMouseMove={ this.mouseMovement }
-					className={'gutenberg-draggable-images__notices'} >
+					className={`gutenberg-draggable-images__notices ${ (startDrag) ? 'in-draggable' : '' } `}
+					style={{height:`${blockSize}px`}}
+				>
 					{children}
-					{ this.state.startDrag && (
+					{ startDrag && (
 						<div style={{ position:'absolute', background:"transparent", top:'0',right:0,bottom:0,left:'0', zIndex: 999999 }}/>
 					)}
 				</div>)

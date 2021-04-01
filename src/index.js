@@ -69,10 +69,21 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 					source: 'attribute',
 					attribute: 'data-y',
 				},
-
 			},
 			default: []
 		},
+		backgroundColor: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.gutenberg-draggable-images__container',
+			attribute: 'data-background',
+		},
+		blockSize: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.gutenberg-draggable-images__container',
+			attribute: 'data-size',
+		}
 	},
 
 

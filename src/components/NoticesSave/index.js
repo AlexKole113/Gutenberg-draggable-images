@@ -1,5 +1,5 @@
 
-const NoticesSave = ({url , coordX, coordY, size,zIndex }) => {
+const NoticesSave = ({url , coordX, coordY, size, zIndex }) => {
 
 	const style = {
 		width: `${size}px`,
