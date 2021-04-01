@@ -13,3 +13,19 @@
   display: flex;
   flex-flow: column;
 }
+
+.gutenberg-draggable-images__notice-example {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.gutenberg-draggable-images__notice-example img {
+  width: 50%;
+}
+
+.gutenberg-draggable-images__notice-example span {
+  cursor: pointer;
+}

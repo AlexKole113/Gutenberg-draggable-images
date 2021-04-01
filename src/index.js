@@ -37,12 +37,6 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 
 
 	attributes: {
-		imgUrl: {
-			type: 'string',
-			selector: '.gutenberg-draggable-images__main',
-			attribute: 'src',
-			default: '../assets/default-image.jpeg'
-		},
 		notices: {
 			type: 'array',
 			source: 'query',
@@ -53,6 +47,23 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 					source: 'attribute',
 					attribute: 'src',
 				},
+				size: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-size',
+					default: '80'
+				},
+				coordX: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-x',
+				},
+				coordY: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-y',
+				},
+
 			},
 			default: []
 		},

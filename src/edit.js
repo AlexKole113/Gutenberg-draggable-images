@@ -1,11 +1,19 @@
 
+import { PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import { useBlockProps } from '@wordpress/block-editor';
+
+import {NoticesControls} from "./components/NoticesControls";
+import {NoticesDraggable} from "./components/NoticesDraggable";
+import {DraggableScreen} from "./components/DraggableScreen";
+
+
 const { MediaUpload, InspectorControls } = wp.blockEditor;
 const {
 	Fragment
 } = wp.element;
 
-import { PanelBody, PanelRow, TextControl } from '@wordpress/components';
-import { useBlockProps } from '@wordpress/block-editor';
+
+
 
 
 import './editor.scss';
@@ -22,27 +30,39 @@ export default function Edit( props ) {
 
 	const addNotices = ( value ) => {
 		notices.push({ url : value.sizes.full.url })
-		const updatedNotices = notices.slice(0)
 		setAttributes({
-			notices: updatedNotices
+			notices: [...notices]
 		})
 	}
-
 
 	const deleteSingleNotice = (i) => {
 		setAttributes({
-			notices: notices.filter( (item,j) => j !== i ).slice(0)
+			notices: [...notices.filter( (item,j) => j !== i )]
 		})
-
 	}
 
+	const changeSize = (e,i) => {
+		console.log(e.target.value, i)
+		notices[i]['size'] = e.target.value
+		setAttributes({
+			notices: [...notices]
+		})
+	}
 
+	const dragStart = (e) => {
+		console.log(e)
+	}
+
+	const eventLogger = (e, data) => {
+		console.log('Event: ', e);
+		console.log('Data: ', data);
+	};
+
+	const noticesCollectionWithControls  = notices.map((item, i) => <NoticesControls key={i} url={item.url} clickHandler={ ()=>{deleteSingleNotice(i)} } changeSize={(e)=>{changeSize(e,i)}} size={item.size} />)
+	const noticesCollectionWithDraggable = notices.map((item, i) => <NoticesDraggable key={i} coordX={item.coordX} coordY={item.coordY} url={item.url} dragStart={dragStart} size={item.size} /> )
 
 	const blockGutenProps = useBlockProps();
 
-
-	const noticesCollectionWithButtons = notices.map((item, i) => <div key={i} className={'gutenberg-draggable-images__notice-example'}><img src={item.url} /><span onClick={()=>{deleteSingleNotice(i)}}>delete image</span></div> )
-	const noticesCollection = notices.map((item, i) => <img key={i} src={item.url} /> )
 	return (
 		<Fragment>
 			{ isSelected && (
@@ -58,7 +78,7 @@ export default function Edit( props ) {
 						</PanelRow>
 						<PanelRow>
 							<div style={{display:'flex', flexFlow:'column'}}>
-								{ noticesCollectionWithButtons }
+								{ noticesCollectionWithControls }
 							</div>
 						</PanelRow>
 					</PanelBody>
@@ -66,20 +86,9 @@ export default function Edit( props ) {
 			) }
 
 			<section { ...blockGutenProps }>
-				<div>
-					<MediaUpload
-						onSelect={ (v)=>{ selectImage(v) }}
-						render={ ( {open} ) => {
-							if( imgUrl ){
-								return <img src={imgUrl} onClick={open} />;
-							}
-							return <img onClick={open} className={'gutenberg-draggable-images__main'} src={imgUrl} />;
-						}}
-					/>
-				</div>
-				<div className={'gutenberg-draggable-images__notices'} >
-					{ noticesCollection }
-				</div>
+				<DraggableScreen>
+					{ noticesCollectionWithDraggable }
+				</DraggableScreen>
 			</section>
 		</Fragment>
 	);
