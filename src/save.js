@@ -30,9 +30,11 @@ export default function save({ attributes }) {
 
 	return (
 		<section { ...useBlockProps.save() }>
-			<DraggableScreen>
-				{ notices.map( ( item, i ) => <NoticesSave key={i} size={item.size} url={item.url} coordX={item.coordX} coordY={item.coordY} zIndex={item.zIndex} /> ) }
-			</DraggableScreen>
+			<div className="container">
+				<DraggableScreen>
+					{ notices.map( ( item, i ) => <NoticesSave key={i} size={item.size} url={item.url} coordX={item.coordX} coordY={item.coordY} zIndex={item.zIndex} /> ) }
+				</DraggableScreen>
+			</div>
 		</section>
 	);
 }

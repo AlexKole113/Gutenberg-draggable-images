@@ -1,7 +1,5 @@
 
-const NoticesControls = ({url, clickHandler, changeSize, size, zIndex,changeZIndex}) => {
-
-	zIndex = zIndex ?? 1;
+const NoticesControls = ({url, clickHandler, changeSize, size, zIndex, changeZIndex}) => {
 
 	return(<div className={'gutenberg-draggable-images__example-controls'}>
 				<img className={'gutenberg-draggable-images__example-controls_img'} src={url} />

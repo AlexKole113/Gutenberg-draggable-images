@@ -16,7 +16,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 0; }
+  padding: 20px 0;
+  border-bottom: 1px solid #007cba4a;
+  min-height: 200px; }
+  .gutenberg-draggable-images__example-controls:nth-child(even) {
+    background-color: #80808012; }
   .gutenberg-draggable-images__example-controls_add-img {
     cursor: pointer;
     display: flex;
@@ -40,7 +44,8 @@
       color: red;
       display: block;
       text-align: right;
-      font-size: 25px; }
+      font-size: 25px;
+      transform: translate(-5px, -36px); }
     .gutenberg-draggable-images__example-controls_inputs_inp-size {
       width: 100%; }
     .gutenberg-draggable-images__example-controls_inputs_z-index {
@@ -49,6 +54,10 @@
 .gutenberg-draggable-images__notices {
   min-height: 400px;
   position: relative; }
+  .gutenberg-draggable-images__notices_draggable_img {
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 
 /*# sourceMappingURL=index.css.map*/

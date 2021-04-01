@@ -24,49 +24,56 @@
 	align-items: center;
 	width: 100%;
 	padding: 20px 0;
+	border-bottom: 1px solid #007cba4a;
+	min-height: 200px;
+	&:nth-child(even){
+	  background-color: #80808012;
+	}
+
 
 	&_add-img {
-	  cursor: pointer;
-	  display: flex;
-	  width: 100%;
-	  justify-content: center;
-	  align-items: center;
-	  border: 1px solid #007cba;
-	  background: #007cba;
-	  color: #fff;
-	  padding: 10px 0;
-	  text-transform: capitalize;
-	  &:hover {
-		background: #fff;
-		color: #007cba;
-	  }
-	}
-
-	&_img {
-	  width: 50%;
-	}
-
-	&_inputs {
-	  width: 50%;
-
-	  &_btn-del{
 		cursor: pointer;
-		color: red;
-		display: block;
-		text-align: right;
-		font-size: 25px;
-	  }
-
-	  &_inp-size {
+		display: flex;
 		width: 100%;
-
+		justify-content: center;
+		align-items: center;
+		border: 1px solid #007cba;
+		background: #007cba;
+		color: #fff;
+		padding: 10px 0;
+		text-transform: capitalize;
+		&:hover {
+		  background: #fff;
+		  color: #007cba;
+		}
 	  }
 
-	  &_z-index {
-		width: 100%;
+	  &_img {
+		width: 50%;
 	  }
 
-	}
+	  &_inputs {
+		width: 50%;
+
+		&_btn-del{
+		  cursor: pointer;
+		  color: red;
+		  display: block;
+		  text-align: right;
+		  font-size: 25px;
+		  transform: translate(-5px, -36px);
+		}
+
+		&_inp-size {
+		  width: 100%;
+
+		}
+
+		&_z-index {
+		  width: 100%;
+		}
+
+	  }
 
 
 
@@ -76,7 +83,9 @@
 	min-height: 400px;
 	position: relative;
 	&_draggable_img {
-
+	  position: absolute;
+	  top:0;
+	  left:0;
 	}
   }
 

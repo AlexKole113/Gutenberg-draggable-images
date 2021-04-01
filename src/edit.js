@@ -16,14 +16,8 @@ const {
 import './editor.scss';
 
 export default function Edit( props ) {
-	const { imgUrl, notices } = props.attributes;
+	const { notices } = props.attributes;
 	const { className, setAttributes, isSelected } = props;
-
-	const selectImage = (value) => {
-		setAttributes({
-			imgUrl: value.sizes.full.url,
-		})
-	}
 
 	const addNotices = ( value ) => {
 		notices.push({ url : value.sizes.full.url })
@@ -39,7 +33,6 @@ export default function Edit( props ) {
 	}
 
 	const changeSize = (e,i) => {
-		console.log(e.target.value, i)
 		notices[i]['size'] = e.target.value
 		setAttributes({
 			notices: [...notices]
@@ -47,28 +40,19 @@ export default function Edit( props ) {
 	}
 
 	const changeZIndex = (e,i) => {
+
 		notices[i]['zIndex'] = e.target.value
 		setAttributes({
 			notices: [...notices]
 		})
 	}
 
-	const dragStop = ( e, data , i ) => {
-		const { x, y } = data;
-		notices[i]['coordX'] = x;
-		notices[i]['coordY'] = y;
-		setAttributes({
-			notices: [...notices]
-		})
-
-	}
-
-
 	const noticesCollectionWithControls  = notices.map((item, i) => (<NoticesControls
 		key={i} url={item.url}
 		clickHandler={ ()=>{deleteSingleNotice(i)} }
 		changeSize={ (e)=>{changeSize(e,i)} }
 		changeZIndex={(e)=>{changeZIndex(e,i)}}
+		zIndex={item.zIndex}
 		size={item.size} />)
 	)
 
@@ -78,7 +62,7 @@ export default function Edit( props ) {
 		coordY={item.coordY}
 		zIndex={item.zIndex}
 		url={item.url}
-		dragStop={ (e,d) =>{dragStop(e, d, i)}}
+		numberItem={i}
 		size={item.size} />)
 	)
 
@@ -107,7 +91,7 @@ export default function Edit( props ) {
 			) }
 
 			<section { ...blockGutenProps }>
-				<DraggableScreen>
+				<DraggableScreen notices={notices} setItemsCoords={setAttributes}>
 					{ noticesCollectionWithDraggable }
 				</DraggableScreen>
 			</section>

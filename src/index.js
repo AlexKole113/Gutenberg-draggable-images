@@ -40,7 +40,7 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 		notices: {
 			type: 'array',
 			source: 'query',
-			selector: '.gutenberg-draggable-images__notices img',
+			selector: '.gutenberg-draggable-images__notices_draggable_img',
 			query: {
 				url: {
 					type: 'string',

@@ -1,22 +1,19 @@
-import Draggable from 'react-draggable';
-
-
-const NoticesDraggable = ({url , coordX, coordY , dragStart, dragStop, size, zIndex }) => {
+const NoticesDraggable = ({url , coordX, coordY, size, zIndex, numberItem }) => {
 
 	const style = {
 		width: `${size}px`,
-		transform: `translate(${coordX}px, ${coordY}px)`,
 		top: `${coordY}px`,
 		left: `${coordX}px`,
 		zIndex
 	}
 
-	return( <Draggable
-			onStop={dragStop}
-			>
-			 	<img style={style} className={'gutenberg-draggable-images__notices_draggable_img'} src={url} />
-			</Draggable>
-	)
+	return(
+		<img
+		style={style}
+		src={url}
+		data-item={numberItem}
+		className={'gutenberg-draggable-images__notices_draggable_img'}
+	/> )
 }
 
 export {NoticesDraggable};

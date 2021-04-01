@@ -1,19 +1,2 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-gutenberg-draggable-images {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px; }
+.wp-block-create-block-gutenberg-draggable-images{background-color:#21759b;color:#fff;padding:2px}.gutenberg-draggable-images__notices{min-height:400px;width:100%;height:100%;position:relative}.gutenberg-draggable-images__notices_draggable_img{position:absolute;top:0;left:0}
 
-.gutenberg-draggable-images__notices {
-  min-height: 400px;
-  width: 100%;
-  height: 100%;
-  position: relative; }
-
-
-/*# sourceMappingURL=style-index.css.map*/
