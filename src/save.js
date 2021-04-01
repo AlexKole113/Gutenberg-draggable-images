@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps } from '@wordpress/block-editor';
+import { DraggableScreen } from "./components/DraggableScreen";
+import { NoticesSave } from "./components/NoticesSave";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,13 +24,15 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+
+	const { notices } = attributes
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'Gutenberg Draggable Images – hello from the saved content!',
-				'gutenberg-draggable-images'
-			) }
-		</p>
+		<section { ...useBlockProps.save() }>
+			<DraggableScreen>
+				{ notices.map( ( item, i ) => <NoticesSave key={i} size={item.size} url={item.url} coordX={item.coordX} coordY={item.coordY} zIndex={item.zIndex} /> ) }
+			</DraggableScreen>
+		</section>
 	);
 }

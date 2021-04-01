@@ -13,9 +13,6 @@ const {
 } = wp.element;
 
 
-
-
-
 import './editor.scss';
 
 export default function Edit( props ) {
@@ -49,17 +46,41 @@ export default function Edit( props ) {
 		})
 	}
 
-	const dragStart = (e) => {
-		console.log(e)
+	const changeZIndex = (e,i) => {
+		notices[i]['zIndex'] = e.target.value
+		setAttributes({
+			notices: [...notices]
+		})
 	}
 
-	const eventLogger = (e, data) => {
-		console.log('Event: ', e);
-		console.log('Data: ', data);
-	};
+	const dragStop = ( e, data , i ) => {
+		const { x, y } = data;
+		notices[i]['coordX'] = x;
+		notices[i]['coordY'] = y;
+		setAttributes({
+			notices: [...notices]
+		})
 
-	const noticesCollectionWithControls  = notices.map((item, i) => <NoticesControls key={i} url={item.url} clickHandler={ ()=>{deleteSingleNotice(i)} } changeSize={(e)=>{changeSize(e,i)}} size={item.size} />)
-	const noticesCollectionWithDraggable = notices.map((item, i) => <NoticesDraggable key={i} coordX={item.coordX} coordY={item.coordY} url={item.url} dragStart={dragStart} size={item.size} /> )
+	}
+
+
+	const noticesCollectionWithControls  = notices.map((item, i) => (<NoticesControls
+		key={i} url={item.url}
+		clickHandler={ ()=>{deleteSingleNotice(i)} }
+		changeSize={ (e)=>{changeSize(e,i)} }
+		changeZIndex={(e)=>{changeZIndex(e,i)}}
+		size={item.size} />)
+	)
+
+	const noticesCollectionWithDraggable = notices.map((item, i) => (<NoticesDraggable
+		key={i}
+		coordX={item.coordX}
+		coordY={item.coordY}
+		zIndex={item.zIndex}
+		url={item.url}
+		dragStop={ (e,d) =>{dragStop(e, d, i)}}
+		size={item.size} />)
+	)
 
 	const blockGutenProps = useBlockProps();
 
@@ -72,7 +93,7 @@ export default function Edit( props ) {
 							<MediaUpload
 								onSelect={ (v)=>{ addNotices(v) }}
 								render={ ({open}) => {
-									return  <span onClick={open} style={{cursor:'pointer'}}>add image</span>;
+									return  <span className={`gutenberg-draggable-images__example-controls_add-img`} onClick={open} >add image</span>;
 								}}
 							/>
 						</PanelRow>

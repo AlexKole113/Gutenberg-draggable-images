@@ -9,5 +9,11 @@
   color: #fff;
   padding: 2px; }
 
+.gutenberg-draggable-images__notices {
+  min-height: 400px;
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
 
 /*# sourceMappingURL=style-index.css.map*/

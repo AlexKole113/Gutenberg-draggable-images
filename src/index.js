@@ -53,6 +53,12 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 					attribute: 'data-size',
 					default: '80'
 				},
+				zIndex: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-z-index',
+					default: '1'
+				},
 				coordX: {
 					type: 'string',
 					source: 'attribute',
