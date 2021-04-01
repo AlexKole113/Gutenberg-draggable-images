@@ -566,6 +566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _utils_unitMap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/unitMap */ "./src/utils/unitMap.js");
 
 
 
@@ -578,6 +579,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 
 var Component = wp.element.Component;
 
@@ -651,7 +653,7 @@ var DraggableScreen = /*#__PURE__*/function (_Component) {
         onMouseMove: this.mouseMovement,
         className: "gutenberg-draggable-images__notices ".concat(startDrag ? 'in-draggable' : '', " "),
         style: {
-          height: "".concat(blockSize, "px")
+          height: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_8__["unitMap"])(blockSize, 'blockHeight')
         }
       }, children, startDrag && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         style: {
@@ -744,6 +746,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoticesDraggable", function() { return NoticesDraggable; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_unitMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/unitMap */ "./src/utils/unitMap.js");
+
 
 
 var NoticesDraggable = function NoticesDraggable(_ref) {
@@ -754,9 +758,9 @@ var NoticesDraggable = function NoticesDraggable(_ref) {
       zIndex = _ref.zIndex,
       numberItem = _ref.numberItem;
   var style = {
-    width: "".concat(size, "px"),
-    top: "".concat(coordY, "px"),
-    left: "".concat(coordX, "px"),
+    width: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(size, 'imageWidth'),
+    top: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(coordY, 'coords'),
+    left: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(coordX, 'coords'),
     zIndex: zIndex
   };
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
@@ -783,6 +787,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoticesSave", function() { return NoticesSave; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_unitMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/unitMap */ "./src/utils/unitMap.js");
+
 
 
 var NoticesSave = function NoticesSave(_ref) {
@@ -792,9 +798,9 @@ var NoticesSave = function NoticesSave(_ref) {
       size = _ref.size,
       zIndex = _ref.zIndex;
   var style = {
-    width: "".concat(size, "px"),
-    top: "".concat(coordY, "px"),
-    left: "".concat(coordX, "px"),
+    width: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(size, 'imageWidth'),
+    top: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(coordY, 'coords'),
+    left: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_1__["unitMap"])(coordX, 'coords'),
     zIndex: zIndex
   };
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
@@ -821,7 +827,7 @@ var NoticesSave = function NoticesSave(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return edit; });
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
@@ -837,8 +843,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NoticesControls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/NoticesControls */ "./src/components/NoticesControls/index.js");
 /* harmony import */ var _components_NoticesDraggable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/NoticesDraggable */ "./src/components/NoticesDraggable/index.js");
 /* harmony import */ var _components_DraggableScreen__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/DraggableScreen */ "./src/components/DraggableScreen/index.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _utils_unitMap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/unitMap */ "./src/utils/unitMap.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -853,12 +860,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var _wp$blockEditor = wp.blockEditor,
     MediaUpload = _wp$blockEditor.MediaUpload,
     InspectorControls = _wp$blockEditor.InspectorControls;
 var Fragment = wp.element.Fragment;
 
-function Edit(props) {
+function edit(props) {
   var _props$attributes = props.attributes,
       notices = _props$attributes.notices,
       backgroundColor = _props$attributes.backgroundColor,
@@ -883,7 +891,7 @@ function Edit(props) {
     }));
   };
 
-  var _changeSize = function changeSize(e, i) {
+  var changeImageSize = function changeImageSize(e, i) {
     notices[i]['size'] = e.target.value;
     setAttributes(_objectSpread(_objectSpread({}, props.attributes), {}, {
       notices: _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_1___default()(notices)
@@ -917,7 +925,7 @@ function Edit(props) {
         deleteSingleNotice(i);
       },
       changeSize: function changeSize(e) {
-        _changeSize(e, i);
+        changeImageSize(e, i);
       },
       changeZIndex: function changeZIndex(e) {
         _changeZIndex(e, i);
@@ -1018,42 +1026,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
- */
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * Internal dependencies
- */
 
 
 
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
- */
 
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('create-block/gutenberg-draggable-images', {
-  /**
-   * @see https://make.wordpress.org/core/2020/11/18/block-api-version-2/
-   */
   apiVersion: 2,
-
-  /**
-   * @see ./edit.js
-   */
+  // coords, size image, block size
   attributes: {
     notices: {
       type: 'array',
@@ -1104,10 +1083,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-
-  /**
-   * @see ./save.js
-   */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
@@ -1127,57 +1102,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_DraggableScreen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/DraggableScreen */ "./src/components/DraggableScreen/index.js");
-/* harmony import */ var _components_NoticesSave__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/NoticesSave */ "./src/components/NoticesSave/index.js");
-
-
-
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
- */
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_DraggableScreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/DraggableScreen */ "./src/components/DraggableScreen/index.js");
+/* harmony import */ var _components_NoticesSave__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/NoticesSave */ "./src/components/NoticesSave/index.js");
+/* harmony import */ var _utils_unitMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/unitMap */ "./src/utils/unitMap.js");
 
 
 
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
- *
- * @return {WPElement} Element to render.
- */
+
 
 function save(_ref) {
   var attributes = _ref.attributes;
   var notices = attributes.notices,
       backgroundColor = attributes.backgroundColor,
       blockSize = attributes.blockSize;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("section", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"].save(), {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("section", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"].save(), {
     style: {
-      height: "".concat(blockSize, "px"),
+      height: Object(_utils_unitMap__WEBPACK_IMPORTED_MODULE_5__["unitMap"])(blockSize, 'blockHeight'),
       backgroundColor: backgroundColor
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "container gutenberg-draggable-images__container",
     "data-background": backgroundColor,
     "data-size": blockSize
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_DraggableScreen__WEBPACK_IMPORTED_MODULE_4__["DraggableScreen"], null, notices.map(function (item, i) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_NoticesSave__WEBPACK_IMPORTED_MODULE_5__["NoticesSave"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_DraggableScreen__WEBPACK_IMPORTED_MODULE_3__["DraggableScreen"], null, notices.map(function (item, i) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_NoticesSave__WEBPACK_IMPORTED_MODULE_4__["NoticesSave"], {
       key: i,
       size: item.size,
       url: item.url,
@@ -1187,6 +1138,35 @@ function save(_ref) {
     });
   }))));
 }
+
+/***/ }),
+
+/***/ "./src/utils/unitMap.js":
+/*!******************************!*\
+  !*** ./src/utils/unitMap.js ***!
+  \******************************/
+/*! exports provided: unitMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unitMap", function() { return unitMap; });
+var unitMap = function unitMap(num, unit) {
+  switch (unit) {
+    case 'coords':
+      return "".concat(num, "px");
+
+    case 'blockHeight':
+      return "".concat(num, "px");
+
+    case 'imageWidth':
+      return "".concat(num, "px");
+  }
+
+  throw new Error('unknown unit');
+};
+
+
 
 /***/ }),
 
@@ -1231,17 +1211,6 @@ function save(_ref) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["element"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/i18n":
-/*!******************************!*\
-  !*** external ["wp","i18n"] ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = window["wp"]["i18n"]; }());
 
 /***/ })
 

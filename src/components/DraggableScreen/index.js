@@ -1,4 +1,8 @@
+import {unitMap} from "../../utils/unitMap";
+
+
 const { Component } = wp.element;
+
 
 class DraggableScreen extends Component {
 
@@ -13,8 +17,6 @@ class DraggableScreen extends Component {
 		this.dragStop = this.dragStop.bind(this)
 		this.mouseMovement = this.mouseMovement.bind(this)
 	}
-
-
 
 	dragStart( e ) {
 		if(!e.target.hasAttribute('data-item') ) return;
@@ -47,7 +49,6 @@ class DraggableScreen extends Component {
 		})
 	}
 
-
 	render(){
 		const { children, blockSize } = this.props;
 		const { startDrag } = this.state
@@ -56,7 +57,7 @@ class DraggableScreen extends Component {
 					onMouseUp={ this.dragStop }
 					onMouseMove={ this.mouseMovement }
 					className={`gutenberg-draggable-images__notices ${ (startDrag) ? 'in-draggable' : '' } `}
-					style={{height:`${blockSize}px`}}
+					style={{height: unitMap( blockSize, 'blockHeight' ) }}
 				>
 					{children}
 					{ startDrag && (

@@ -1,10 +1,11 @@
+import {unitMap} from "../../utils/unitMap";
 
 const NoticesSave = ({url , coordX, coordY, size, zIndex }) => {
 
 	const style = {
-		width: `${size}px`,
-		top: `${coordY}px`,
-		left: `${coordX}px`,
+		width: unitMap( size, 'imageWidth' ),
+		top: unitMap( coordY,'coords' ),
+		left: unitMap(coordX, 'coords'),
 		zIndex
 	}
 

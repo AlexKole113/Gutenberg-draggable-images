@@ -1,10 +1,11 @@
-
 import { Panel, PanelBody, PanelRow,  ColorPicker } from '@wordpress/components';
 import { useBlockProps } from '@wordpress/block-editor';
 
 import {NoticesControls} from "./components/NoticesControls";
 import {NoticesDraggable} from "./components/NoticesDraggable";
 import {DraggableScreen} from "./components/DraggableScreen";
+
+import {unitMap} from "./utils/unitMap";
 
 
 const { MediaUpload, InspectorControls } = wp.blockEditor;
@@ -15,7 +16,7 @@ const {
 
 import './editor.scss';
 
-export default function Edit( props ) {
+export default function edit( props ) {
 	const { notices, backgroundColor, blockSize } = props.attributes;
 	const { setAttributes, isSelected } = props;
 
@@ -34,8 +35,8 @@ export default function Edit( props ) {
 		})
 	}
 
-	const changeSize = (e,i) => {
-		notices[i]['size'] = e.target.value
+	const changeImageSize = (e,i) => {
+		notices[i]['size'] = e.target.value;
 		setAttributes({
 			...props.attributes,
 			notices: [...notices]
@@ -60,14 +61,14 @@ export default function Edit( props ) {
 	const changeBlockSize = (e) => {
 		setAttributes({
 			...props.attributes,
-			blockSize: e.target.value
+			blockSize:  e.target.value
 		})
 	}
 
 	const noticesCollectionWithControls  = notices.map((item, i) => (<NoticesControls
 		key={i} url={item.url}
 		clickHandler={ ()=>{deleteSingleNotice(i)} }
-		changeSize={ (e)=>{changeSize(e,i)} }
+		changeSize={ (e)=>{changeImageSize(e,i)} }
 		changeZIndex={(e)=>{changeZIndex(e,i)}}
 		zIndex={item.zIndex}
 		size={item.size} />)
