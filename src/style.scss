@@ -12,6 +12,12 @@
 }
 
 .gutenberg-draggable-images {
+
+  &__container {
+	margin: auto;
+  }
+
+
   &__notices {
 	min-height: 100px;
 	width: 100%;

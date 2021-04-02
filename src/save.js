@@ -5,11 +5,16 @@ import { unitMap } from "./utils/unitMap";
 
 export default function save({ attributes }) {
 
-	const { notices, backgroundColor, blockSize } = attributes
+	const { notices, backgroundColor, containerHeight, containerWidth } = attributes
 
 	return (
-		<section { ...useBlockProps.save() } style={{height: unitMap( blockSize, 'blockHeight' ), backgroundColor}} >
-			<div className="container gutenberg-draggable-images__container" data-background={backgroundColor} data-size={blockSize}>
+		<section { ...useBlockProps.save() } >
+			<div style={{ height: unitMap( containerHeight, 'containerHeight' ), width: unitMap( containerWidth, 'containerWidth' ) , backgroundColor}}
+				 className="gutenberg-draggable-images__container"
+				 data-background={backgroundColor}
+				 data-height={containerHeight}
+				 data-width={containerWidth}
+			>
 				<DraggableScreen>
 					{ notices.map( ( item, i ) => <NoticesSave key={i} size={item.size} url={item.url} coordX={item.coordX} coordY={item.coordY} zIndex={item.zIndex} /> ) }
 				</DraggableScreen>

@@ -5,7 +5,6 @@ import {NoticesControls} from "./components/NoticesControls";
 import {NoticesDraggable} from "./components/NoticesDraggable";
 import {DraggableScreen} from "./components/DraggableScreen";
 
-import {unitMap} from "./utils/unitMap";
 
 
 const { MediaUpload, InspectorControls } = wp.blockEditor;
@@ -15,9 +14,10 @@ const {
 
 
 import './editor.scss';
+import {unitMap} from "./utils/unitMap";
 
 export default function edit( props ) {
-	const { notices, backgroundColor, blockSize } = props.attributes;
+	const { notices, backgroundColor, containerHeight, containerWidth } = props.attributes;
 	const { setAttributes, isSelected } = props;
 
 	const addNotices = ( value ) => {
@@ -58,12 +58,21 @@ export default function edit( props ) {
 		})
 	}
 
-	const changeBlockSize = (e) => {
+	const changeContainerHeight = (e) => {
 		setAttributes({
 			...props.attributes,
-			blockSize:  e.target.value
+			containerHeight:  e.target.value
 		})
 	}
+
+	const changeContainerWidth = (e) => {
+		setAttributes({
+			...props.attributes,
+			containerWidth:  e.target.value
+		})
+	}
+
+
 
 	const noticesCollectionWithControls  = notices.map((item, i) => (<NoticesControls
 		key={i} url={item.url}
@@ -101,10 +110,15 @@ export default function edit( props ) {
 							</PanelRow>
 							<PanelRow>
 								<div style={{padding:'16px 16px 12px'}}>
-									<span>Block height (px)</span>
-									<input type="number" value={blockSize} onChange={(e)=>{ changeBlockSize(e) }}/>
+									<span>Container height (px)</span>
+									<input type="number" value={containerHeight} onChange={(e)=>{ changeContainerHeight(e) }}/>
 								</div>
-
+							</PanelRow>
+							<PanelRow>
+								<div style={{padding:'16px 16px 12px'}}>
+									<span>Container width (px)</span>
+									<input type="number" value={containerWidth} onChange={(e)=>{ changeContainerWidth(e) }}/>
+								</div>
 							</PanelRow>
 						</PanelBody>
 						<PanelBody title="Images Settings" initialOpen={ false } >
@@ -127,8 +141,8 @@ export default function edit( props ) {
 			) }
 
 			<section { ...blockGutenProps } style={{backgroundColor}} >
-				<div className="container">
-					<DraggableScreen notices={notices} setItemsCoords={setAttributes} blockSize={blockSize} >
+				<div style={{height: unitMap( containerHeight, 'containerHeight' ), width: unitMap( containerWidth,'containerWidth' ) }} className="container gutenberg-draggable-images__container">
+					<DraggableScreen notices={notices} setItemsCoords={setAttributes} containerSizes={{containerHeight,containerWidth}} >
 						{ noticesCollectionWithDraggable }
 					</DraggableScreen>
 				</div>

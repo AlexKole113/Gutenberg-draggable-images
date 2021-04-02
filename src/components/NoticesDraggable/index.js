@@ -4,8 +4,8 @@ const NoticesDraggable = ({url , coordX, coordY, size, zIndex, numberItem }) => 
 
 	const style = {
 		width: unitMap( size, 'imageWidth' ),
-		top: unitMap( coordY,'coords' ),
-		left: unitMap(coordX, 'coords'),
+		top: unitMap( coordY,'coordY' ),
+		left: unitMap(coordX, 'coordX'),
 		zIndex
 	}
 

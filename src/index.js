@@ -51,11 +51,17 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 			selector: '.gutenberg-draggable-images__container',
 			attribute: 'data-background',
 		},
-		blockSize: {
+		containerHeight: {
 			type: 'string',
 			source: 'attribute',
 			selector: '.gutenberg-draggable-images__container',
-			attribute: 'data-size',
+			attribute: 'data-height',
+		},
+		containerWidth: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.gutenberg-draggable-images__container',
+			attribute: 'data-width',
 		}
 	},
 
