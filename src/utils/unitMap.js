@@ -1,7 +1,5 @@
 const unitMap = ( num , unit ) => {
 
-
-
 	switch ( unit ) {
 		case 'coordX':
 			return `${ num }px`;
