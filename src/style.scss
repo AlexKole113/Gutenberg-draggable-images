@@ -32,3 +32,28 @@
 }
 
 
+//animations
+.fadeIn-animation-hidden {
+  transition: all .6s;
+  transform: translateY(60px);
+  opacity: 0;
+}
+
+.fadeIn-animation-visible {
+  transition: all .6s;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.scale-animation-hidden {
+  transition: all .6s;
+  transform: scale(.5);
+  opacity: 0;
+}
+
+.scale-animation-visible {
+  transition: all .6s;
+  transform: scale(1);
+  opacity: 1;
+}
+

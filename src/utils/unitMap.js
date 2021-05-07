@@ -1,16 +1,24 @@
-const unitMap = ( num , unit ) => {
+const unitMap = ( num , { unit , containerHeight, containerWidth } ) => {
+
+	num = parseFloat(num);
 
 	switch ( unit ) {
+
 		case 'coordX':
-			return `${ num }px`;
+			if( !containerWidth ) throw new Error( `need container width ${unit}` );
+			return `${ num  / containerWidth * 100 }%`;
 		case 'coordY':
-			return `${ num }px`;
+			if( !containerHeight ) throw new Error( `need container height ${unit}` );
+			return `${ num / containerHeight * 100 }%`;
 		case 'containerHeight':
-			return `${ num }px`;
+			return `${ num / window.innerWidth * 100 }vw`;
 		case 'containerWidth':
-			return `${ num }px`;
+			return `${ num / window.innerWidth * 100 }vw`;
 		case 'imageWidth':
-			return `${ num }px`;
+			if( !containerWidth ) throw new Error( `need container width for ${unit}` );
+			return `${ num / containerWidth * 100 }%`;
+		case 'minHeight':
+			return `${num}px`
 	}
 
 	throw new Error( 'unknown unit' );

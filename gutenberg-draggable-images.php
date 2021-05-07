@@ -22,3 +22,9 @@ function create_block_gutenberg_draggable_images_block_init() {
 	register_block_type_from_metadata( __DIR__ );
 }
 add_action( 'init', 'create_block_gutenberg_draggable_images_block_init' );
+
+
+add_action( 'wp_enqueue_scripts', function(){
+	wp_enqueue_script( 'gutenberg_draggable_images_animation', plugins_url( 'src/components/AnimationSelect/animations/animations.js', __FILE__ ) );
+} );
+

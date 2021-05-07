@@ -42,6 +42,16 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 					source: 'attribute',
 					attribute: 'data-y',
 				},
+				mimeType: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-mime',
+				},
+				animation: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'data-animation',
+				}
 			},
 			default: []
 		},
@@ -56,12 +66,14 @@ registerBlockType( 'create-block/gutenberg-draggable-images', {
 			source: 'attribute',
 			selector: '.gutenberg-draggable-images__container',
 			attribute: 'data-height',
+			default: '500'
 		},
 		containerWidth: {
 			type: 'string',
 			source: 'attribute',
 			selector: '.gutenberg-draggable-images__container',
 			attribute: 'data-width',
+			default: '800'
 		}
 	},
 

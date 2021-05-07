@@ -7,7 +7,8 @@ class DraggableScreen extends Component {
 		super( props );
 		this.state = {
 			startDrag: false,
-			currentDraggableNumberItem: null
+			currentDraggableNumberItem: null,
+			currentCoordsOnItem:[]
 		}
 
 		this.dragStart = this.dragStart.bind(this)
@@ -17,10 +18,10 @@ class DraggableScreen extends Component {
 
 	dragStart( e ) {
 		if(!e.target.hasAttribute('data-item') ) return;
-
 		this.setState({
 			startDrag: true,
-			currentDraggableNumberItem: e.target.getAttribute('data-item')
+			currentDraggableNumberItem: e.target.getAttribute('data-item'),
+			currentCoordsOnItem:[ e.nativeEvent.offsetX, e.nativeEvent.offsetY ]
 		})
 	}
 
@@ -32,14 +33,14 @@ class DraggableScreen extends Component {
 	}
 
 	mouseMovement( e ) {
-		const { startDrag, currentDraggableNumberItem } = this.state;
+		const { startDrag, currentDraggableNumberItem, currentCoordsOnItem } = this.state;
 		if( !startDrag || !currentDraggableNumberItem ) return;
 
 		const { notices, setItemsCoords } = this.props;
 		const { offsetX, offsetY } = e.nativeEvent;
 
-		notices[currentDraggableNumberItem]['coordX'] = offsetX;
-		notices[currentDraggableNumberItem]['coordY'] = offsetY;
+		notices[currentDraggableNumberItem]['coordX'] = offsetX - currentCoordsOnItem[0];
+		notices[currentDraggableNumberItem]['coordY'] = offsetY - currentCoordsOnItem[1];
 		setItemsCoords({
 			notices: [...notices]
 		})
