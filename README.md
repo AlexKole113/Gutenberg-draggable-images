@@ -2,4 +2,4 @@
 
 Adds a Gutenberg block with Draggable images
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/AlexKole113/Gutenberg-draggable-images/blob/main/assets/example.gif)
