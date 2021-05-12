@@ -1,6 +1,8 @@
 # Plugin for WordPress.
 
 ### Adds a Gutenberg block with Draggable images. 
+
+see more on https://wordpress.org/plugins/draggable-images-block/
   
   
   
